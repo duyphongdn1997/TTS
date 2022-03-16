@@ -166,3 +166,9 @@ internal/*
 wandb
 depot/*
 coqui_recipes/*
+/dataset/25hours/wavs/
+/recipes/wavs/
+/recipes/data.zip
+/recipes/metadata.txt
+/copy_file.py
+/create_script.py

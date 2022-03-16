@@ -18,7 +18,7 @@ dataset_config = BaseDatasetConfig(
 
 
 audio_config = BaseAudioConfig(
-    sample_rate=22050,
+    sample_rate=16000,
     win_length=1024,
     hop_length=256,
     num_mels=80,
@@ -42,23 +42,23 @@ vitsArgs = VitsArgs(
 config = VitsConfig(
     model_args=vitsArgs,
     audio=audio_config,
-    run_name="vits_vctk",
-    batch_size=32,
-    eval_batch_size=16,
+    run_name="vits_vi_TTS",
+    batch_size=1,
+    eval_batch_size=1,
     batch_group_size=5,
     num_loader_workers=4,
     num_eval_loader_workers=4,
     run_eval=True,
     test_delay_epochs=-1,
     epochs=1000,
-    text_cleaner="english_cleaners",
+    text_cleaner="vn_basic",
     use_phonemes=True,
     phoneme_cache_path=os.path.join(output_path, "phoneme_cache"),
     compute_input_seq_cache=True,
     print_step=25,
     print_eval=False,
     mixed_precision=True,
-    max_text_len=325,  # change this if you have a larger VRAM than 16GB
+    max_text_len=100,  # change this if you have a larger VRAM than 16GB
     output_path=output_path,
     datasets=[dataset_config],
 )

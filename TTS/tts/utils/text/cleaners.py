@@ -143,3 +143,16 @@ def multilingual_cleaners(text):
     text = remove_aux_symbols(text)
     text = collapse_whitespace(text)
     return text
+
+
+def vn_basic(text):
+    """
+    Basic pipeline for vietnamese
+    Args:
+        text:
+
+    Returns:
+
+    """
+    text = lowercase(text)
+    return text

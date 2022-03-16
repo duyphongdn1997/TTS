@@ -10,12 +10,13 @@ from TTS.tts.models.vits import Vits
 from TTS.tts.utils.text.tokenizer import TTSTokenizer
 from TTS.utils.audio import AudioProcessor
 
-output_path = os.path.dirname(os.path.abspath(__file__))
+output_path = os.path.dirname(os.path.abspath(os.path.join(os.path.abspath(__file__), "..", "..")))
 dataset_config = BaseDatasetConfig(
-    name="ljspeech", meta_file_train="metadata.csv", path=os.path.join(output_path, "../LJSpeech-1.1/")
+    name="vn_speech", meta_file_train="metadata.txt",
+    path=os.path.join(output_path)
 )
 audio_config = BaseAudioConfig(
-    sample_rate=22050,
+    sample_rate=16000,
     win_length=1024,
     hop_length=256,
     num_mels=80,
@@ -33,7 +34,7 @@ audio_config = BaseAudioConfig(
 
 config = VitsConfig(
     audio=audio_config,
-    run_name="vits_ljspeech",
+    run_name="vits_vn_tts",
     batch_size=32,
     eval_batch_size=16,
     batch_group_size=5,
@@ -42,9 +43,9 @@ config = VitsConfig(
     run_eval=True,
     test_delay_epochs=-1,
     epochs=1000,
-    text_cleaner="english_cleaners",
+    text_cleaner="vn_basic",
     use_phonemes=True,
-    phoneme_language="en-us",
+    phoneme_language="vi",
     phoneme_cache_path=os.path.join(output_path, "phoneme_cache"),
     compute_input_seq_cache=True,
     print_step=25,
